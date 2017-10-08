@@ -12,6 +12,60 @@
    不能强迫用户去依赖那些他们不使用的接口。换句话说，使用多个专门的接口比使用单一的总接口总要好。 
 * 设计模式
 ** 创建型模式 5
+*** Factory Pattern
+**** 意图：定义一个创建对象的接口，让子类自己决定实例化哪一个工厂类，使创建过程延迟到子类进行。
+**** 优点
+***** 调用者创建对象知道名称即可
+***** 扩展性高
+***** 屏蔽产品的具体实现，调用者只关注接口
+**** 缺点
+***** 增加系统复杂度
+***** 增加具体类的依赖
+**** 注意事项
+***** 复杂对象适合使用工厂模式
+*** Abstract Factory Pattern
+*** Singleton Pattern
+**** m3
+     #+BEGIN_SRC java
+     public class Singleton {  
+         private static Singleton instance = new Singleton();  
+         private Singleton (){}  
+         public static Singleton getInstance() {  
+             return instance;  
+         }  
+     } 
+     #+END_SRC
+**** m4
+      #+BEGIN_SRC java
+      public class Singleton {  
+          private volatile static Singleton singleton;  
+          private Singleton (){}  
+          public static Singleton getSingleton() {  
+              if (singleton == null) {  
+                  synchronized (Singleton.class) {  
+                      if (singleton == null) {  
+                          singleton = new Singleton();  
+                      }  
+                  }  
+              }  
+             return singleton;  
+         }  
+     }  
+     #+END_SRC
+**** m5
+     #+BEGIN_SRC java
+     public class Singleton {  
+         private static class SingletonHolder {  
+             private static final Singleton INSTANCE = new Singleton();  
+         }  
+         private Singleton (){}  
+         public static final Singleton getInstance() {  
+             return SingletonHolder.INSTANCE;  
+         }  
+     }   
+     #+END_SRC
+*** Builder Pattern
+*** Prototype Pattern
 ** 结构型 7
 ** 行为型 11
 ** 其它 2
