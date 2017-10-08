@@ -1,0 +1,84 @@
+* Java语言 
+** 权限
+  + private: 只能在类中访问，不能在其它类中访问
+  + default: 只能在类中、package内访问
+  + protected: 只能类、package、子类访问
+  + public:全都可以访问
+
+** 继承
+  + 等价 vs 类似
+  + 单根结构
+** 多态
+  + 动态绑定
+
+** 程序运行，数据保存
+   + 寄存器
+   + 栈
+   + 堆
+   + 静态存储
+   + 常数存储
+   + 非RAM存储
+** 关键字
+   + static
+   + == vs equals
+
+** 数据类型
+*** 主要类型
+   存在于栈中，不需要new创建。
+   + boolean
+   + char
+   + byte
+   + int
+   + long
+   + float
+   + double
+   + void
+*** 集合
+    + Vector: 数组实现，线程安全
+    + ArrayList: 通过数组实现的，线程不安全
+    + LinkedList: 链表实现，线程不安全
+    + HashMap: 线程非不安全，重写key的equals和hashCode方法，容许null值存在
+    + Hashtable: 线程安全， 不容许null值存在
+    + TreeMap: 线程不安全，排序，容许null值，但会报空指针异常, 需要实现排序接口
+
+* 概念
+** 重载overload
+   参数列表区分，返回值不可以区分
+** static
+   static方法没有this
+   static块
+** finalize
+   垃圾回收器先调用finalize(), 在下一次的垃圾收集过程中，才会真正回收对象
+的内存。
+   垃圾回收只跟内存有关。
+** 初始化顺序
+   首先static，接着是非static
+
+** 访问权限
+*** 默认
+*** proteceted
+*** private
+*** public
+** 继承
+*** 默认调用父类的默认构造函数，如果有参数，需要显式调用super
+*** upcast
+*** final
+     + 数据：1. 编译器常数 2. 运行初期初始化的一个值，不希望发生变化。 初始化一个值
+     + 句柄：句柄不变，句柄指向的对象可以变化
+     + 空白final：在构造器初始化
+     + 方法：1. 不可改变 2. 执行效率 3. 所有的private方法自动成为final ， 静态绑定
+     + 类：不能被继承
+** 多态 
+*** 抽象类
+*** 接口
+    + 数据类型默认是static和final
+    + 方法默认是public
+    + 考虑使用成员变量时，考虑采用抽象类
+*** 内部类
+** 传递对象
+*** 克隆
+       + 类设置为final，无法clone
+** 多线程
+*** Thread
+*** Threadable： 可以被多个线程复用
+

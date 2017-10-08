@@ -1,0 +1,100 @@
+* solid原则
+** SRP: The Single Responsibility Principle 单一职责原则
+   当需要修改某个类的时候原因有且只有一个（THERE SHOULD NEVER BE MORE THAN ONE REASON FOR A CLASS TO CHANGE）。换句话说就是让一个类只做一种类型责任，当这个类需要承当其他类型的责任的时候，就需要分解这个类。 
+** OCP: Open Closed Princple 开放封闭原则
+   软件实体应该是可扩展，而不可修改的。也就是说，对扩展是开放的，而对修改是封闭的。这个原则是诸多面向对象编程原则中最抽象、最难理解的一个。
+** LSP: The Liskov Substitution Princple 里氏替换原则
+  当一个子类的实例应该能够替换任何其超类的实例时，它们之间才具有is-A关系。
+** DIP: The Dependency Inversion Princple 依赖倒置原则
+   1. 高层模块不应该依赖于低层模块，二者都应该依赖于抽象 
+   2. 抽象不应该依赖于细节，细节应该依赖于抽象 
+** ISP: The Interface Segregation Princple 接口分离原则
+   不能强迫用户去依赖那些他们不使用的接口。换句话说，使用多个专门的接口比使用单一的总接口总要好。 
+* 设计模式
+** 创建型模式 5
+*** Factory Pattern 
+**** 意图：定义一个创建对象的接口，让子类自己决定实例化哪一个工厂类，使创建过程延迟到子类进行。
+**** 优点
+***** 调用者创建对象知道名称即可
+***** 扩展性高
+***** 屏蔽产品的具体实现，调用者只关注接口
+**** 缺点
+***** 增加系统复杂度
+***** 增加具体类的依赖
+**** 注意事项
+***** 复杂对象适合使用工厂模式
+**** uml
+      [[ ../static/img/program/factory_pattern_uml_diagram.jpg]]
+*** Abstract Factory Pattern
+*** Singleton Pattern
+**** m3
+     #+BEGIN_SRC java
+     public class Singleton {  
+         private static Singleton instance = new Singleton();  
+         private Singleton (){}  
+         public static Singleton getInstance() {  
+             return instance;  
+         }  
+     } 
+     #+END_SRC
+**** m4
+      #+BEGIN_SRC java
+      public class Singleton {  
+          private volatile static Singleton singleton;  
+          private Singleton (){}  
+          public static Singleton getSingleton() {  
+              if (singleton == null) {  
+                  synchronized (Singleton.class) {  
+                      if (singleton == null) {  
+                          singleton = new Singleton();  
+                      }  
+                  }  
+              }  
+             return singleton;  
+         }  
+     }  
+     #+END_SRC
+**** m5
+     #+BEGIN_SRC java
+     public class Singleton {  
+         private static class SingletonHolder {  
+             private static final Singleton INSTANCE = new Singleton();  
+         }  
+         private Singleton (){}  
+         public static final Singleton getInstance() {  
+             return SingletonHolder.INSTANCE;  
+         }  
+     }   
+     #+END_SRC
+*** Builder Pattern
+*** Prototype Pattern 
+** 结构型 7
+*** Adapter Pattern
+    适配器模式将一个类的接口，转换成客户期望的另一接口，让原本接口不兼容的类可以合作无间。
+*** Bridge Pattern
+*** Filter Pattern
+*** Decorator Pattern
+    装饰者模式动态地将责任附加到对象上。若要扩展功能，装饰者提供了比继承更有弹性的替代方案。
+*** Facade Pattern
+    外观模式提供一个统一的接口，用来访问子系统中的一群接口。外观定义了一个高层接口，让子系统更容易使用。
+*** Flyweirht Pattern
+*** Proxy Pattern
+** 行为型 11
+*** Chain of Responsibility Pattern
+*** Command Pattern
+*** Interpreter Pattern
+*** Iterator Pattern
+*** Mediator Pattern
+*** Memento Pattern
+*** Observer Pattern
+    观察者模式定义了对象之间的一对多依赖，当一个对象改变状态时，它的所有依赖者都会收到通知并自动跟新。
+*** State Pattern
+*** Null Object Pattern
+*** Strategy Pattern
+    策略模式定义了算法族，分别封装起来，让它们之间可以互相替换，此模式让算法的变化独立于使用算法的客户。
+*** Template Pattern
+    模板方法模式在一个方法中定义一个算法的骨架，而将一些步骤延迟到子类中。模板方法使得子类可以在不改变算法结构的情况下，重新定义算法中的某些步骤。
+*** Visitor Pattern
+** 其它 2
+*** 并发型 1
+*** 线程池 1
